@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ book.title }} dsffs</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <style>
+        body
+        {
+            background-color:aqua;
+        }
+        .navbar-center {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+          }
+        .navbar {
+            padding: 0.5rem 1rem;
+            height: 100px;
+        }
+        .navbar .nav-link {
+            font-size: 14px;
+            line-height: 60px;
+        }
+        .navbar-brand {
+            font-size: 1.5rem;
+            height: 40px;
+            line-height: 40px;
+        }
+        .navbar-brand img {
+            height: 100%;
+        }
+        .navbar-center {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+          }
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.25rem 0.5rem;
+                height: auto; /* Adjust as necessary for mobile view */
+            }
+            .navbar .nav-link {
+                font-size: 12px;
+                line-height: normal; /* Adjust for smaller font size */
+            }
+        }
+    </style>
+</head>
+<body>
+    
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="">Book Details </a>
+  
+</nav>
+</nav>
+<br>
+<br>
+<br>
+   
+
+    <div class="container mt-5">
+        <h2>Update Book</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Update</button>
+            {% comment %} <a href="{% url 'book_detail' book.id %}" class="btn btn-secondary">Cancel</a> {% endcomment %}
+            <a href="{% if book.id %}{% url 'book_detail' book.id %}{% else %}{% url 'book_list' %}{% endif %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
